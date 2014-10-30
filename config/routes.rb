@@ -1,4 +1,16 @@
 TestAuthen::Application.routes.draw do
+  get 'welcome/index'
+  resources :welcome
+  root :to => redirect('/welcome')
+  
+  get 'welcome/index'
+  get 'auth/facebook', as: 'login'
+  get 'auth/:provider/callback' => 'sessions#create' 
+  get 'logout' => 'sessions#destroy'
+  #get 'auth/failure' => 'sessions#failure'
+  
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
